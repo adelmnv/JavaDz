@@ -1,6 +1,6 @@
-package kz.itstep.dao;
+package kz.itstep2.dao;
 
-import kz.itstep.model.User;
+import kz.itstep2.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ public class UserDAOImpl implements UserDAO{
     private final String SELECT_ALL = "SELECT * FROM users_test";
     private final String SELECT_BY_ID = "SELECT * FROM users_test where id = ?";
     private final String CREATE_USER = "INSERT INTO users_test(id, login, password, creation_date) VALUES(?,?,?,?)";
-
+    private final String UPDATE_BY_ID = "UPDATE User SET login = ?, password = ?, creation_date = ?"+"WHERE id = ?";
     public UserDAOImpl(Connection connection) {
         this.connection = connection;
     }
@@ -68,7 +68,15 @@ public class UserDAOImpl implements UserDAO{
     }
 
     @Override
-    public void updateById(Long id, User user) {
+    public Integer updateById(Long id, User user) throws SQLException{
+        PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_BY_ID);
+        preparedStatement.setString(1, user.getLogin());
+        preparedStatement.setString(2,user.getPassword());
+        preparedStatement.setDate(3,user.getCreation_date());
+        preparedStatement.setLong(4,id);
 
+        var rowAffectedCount = preparedStatement.executeUpdate();
+
+        return rowAffectedCount;
     }
 }

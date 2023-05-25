@@ -1,8 +1,9 @@
-package kz.itstep;
+package kz.itstep2;
 
-import kz.itstep.dao.UserDAO;
-import kz.itstep.dao.UserDAOImpl;
-import kz.itstep.model.User;
+import kz.itstep2.dao.UserDAO;
+import kz.itstep2.dao.UserDAOImpl;
+import kz.itstep2.db.DatabaseConnection;
+import kz.itstep2.model.User;
 
 import java.sql.*;
 import java.time.LocalDate;

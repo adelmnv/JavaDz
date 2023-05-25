@@ -1,4 +1,4 @@
-package kz.itstep.model;
+package kz.itstep2.model;
 
 import java.sql.Date;
 

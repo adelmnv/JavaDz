@@ -7,9 +7,9 @@ import java.util.Optional;
 public interface DAO<T> {
 
 
-    Optional<T> findById(Long id);
+    Optional<T> findById(Long id) throws SQLException;
     List<T> findAll() throws SQLException;
-    Integer save(T t);
-    Integer updateById(Long id, T t);
-    Integer deleteById(Long id, T t);
+    Integer save(T t) throws SQLException;
+    Integer updateById(Long id, T t) throws SQLException;
+    Integer deleteById(Long id) throws SQLException;
 }
